@@ -1,54 +1,92 @@
-# Finanças do Casal
+Finanças do Casal
+Juntos, mais longe.
 
-Aplicação web para o casal acompanhar receitas, despesas, investimentos e dinheiro guardado. **Não é um banco**: não movimenta dinheiro nem se conecta a contas. Tudo é digitado manualmente e fica salvo no `LocalStorage` do seu navegador (sem backend, sem sincronização entre dispositivos).
+Uma plataforma gratuita e de código aberto criada para ajudar casais a cuidarem melhor do próprio dinheiro. A ideia é simples: reunir em um só lugar tudo o que envolve a vida financeira a dois — rendas, despesas, investimentos, economias e planos para o futuro.
+Sobre o projeto
+Organizar as finanças já pode ser complicado individualmente. Quando duas pessoas compartilham planos, despesas e responsabilidades, surgem ainda mais coisas para conciliar. Cada um tem sua renda, seus compromissos e suas prioridades, e nem sempre é fácil visualizar como tudo se encaixa.
 
-## Requisitos
-- Node.js **20 LTS** (recomendado; funciona com 18+ e 22). Há um `.nvmrc` com a versão 20.
+O Finanças do Casal surgiu justamente dessa necessidade: criar um espaço onde duas pessoas possam acompanhar a própria situação financeira, entender para onde o dinheiro está indo e planejar o futuro com mais clareza.
 
-## Rodar no VS Code
-```bash
+Mais do que registrar entradas e saídas, a proposta é tornar as conversas sobre dinheiro mais simples e ajudar o casal a transformar sonhos em objetivos possíveis.
+
+É um projeto pessoal, gratuito e open source, desenvolvido inicialmente para atender à realidade de duas pessoas, mas com possibilidades de expansão no futuro.
+Como funciona
+A plataforma funciona como um organizador financeiro. Tudo é registrado manualmente pelo usuário, que pode acompanhar os resultados e entender melhor como está utilizando o próprio dinheiro.
+
+Ela não funciona como um banco digital e não realiza operações financeiras. Na prática:
+- Não realiza pagamentos nem movimenta dinheiro.
+- Não possui conexão com bancos ou corretoras.
+- Não consulta cotações nem calcula rendimentos automaticamente.
+- Todos os valores, aplicações e movimentações são informados manualmente.
+A renda cadastrada representa o valor disponível para o planejamento financeiro daquele mês, e não um saldo bancário real.
+O que você pode fazer com a plataforma
+- Acompanhar a situação financeira: visualizar rapidamente quanto entrou, quanto foi gasto, quanto está investido e quanto foi guardado. Também é possível consultar gráficos e comparar os resultados com meses anteriores.
+- Organizar o orçamento a dois: cadastrar a renda de cada pessoa, definir quanto será destinado a cada finalidade e estabelecer limites de gastos por categoria, com alertas quando esses limites forem ultrapassados.
+- Dividir despesas de maneira justa: organizar contas compartilhadas com divisão igualitária, proporcional à renda ou personalizada. A plataforma também permite acompanhar quem realizou cada pagamento e quem precisa acertar sua parte.
+- Registrar todas as movimentações: acompanhar receitas, despesas, investimentos, valores guardados e transferências. Os registros podem ser filtrados por período, categoria, responsável e tipo, incluindo despesas recorrentes e parceladas.
+- Acompanhar os investimentos: cadastrar aplicações manualmente, registrar aportes, visualizar o patrimônio acumulado e acompanhar sua distribuição entre modalidades e pessoas, além da evolução ao longo do tempo.
+- Planejar objetivos e sonhos: criar metas como comprar uma moto, conquistar a casa própria, viajar ou organizar um casamento. Cada objetivo conta com acompanhamento de progresso e histórico de contribuições. Também é possível organizar uma lista de desejos e planejar o mês seguinte antes de assumir novos compromissos.
+- Entender a evolução financeira: consultar históricos mensais e anuais, visualizar a distribuição dos gastos, acompanhar investimentos e economias e comparar diferentes períodos para entender o que melhorou e o que ainda precisa de atenção.
+Algumas regras importantes
+Para manter os registros organizados e evitar inconsistências, a plataforma segue algumas regras:
+- Todos os valores são armazenados em centavos inteiros e apresentados em Real (R$), reduzindo problemas de arredondamento.
+- O que foi planejado e o que realmente aconteceu são tratados separadamente. Uma meta ou um desejo não vira uma movimentação financeira até que seja registrado ou confirmado.
+- Transferências entre contas ou categorias próprias não são consideradas receitas ou despesas.
+- Um investimento não pode ser contabilizado duas vezes como saída de dinheiro.
+- O saldo pode ficar negativo caso as despesas ultrapassem a renda disponível.
+- A mudança de mês não apaga os registros anteriores. Todo o histórico permanece disponível para consulta.
+Privacidade e armazenamento dos dados
+A plataforma foi pensada para funcionar sem depender de servidores ou bancos de dados externos.
+
+Todos os dados ficam armazenados localmente no navegador do aparelho utilizado, por meio do LocalStorage. Isso significa que suas informações não são enviadas para servidores nem compartilhadas com o repositório do projeto.
+
+Como consequência, os dados não são sincronizados automaticamente entre diferentes aparelhos.
+
+Para facilitar a transferência e a segurança das informações, a área de Configurações oferece:
+- Exportação de um backup completo em JSON.
+- Importação de backups em outros aparelhos.
+- Exportação das movimentações financeiras em CSV.
+É recomendável manter backups atualizados para evitar a perda dos registros.
+Tecnologias utilizadas
+O projeto foi desenvolvido utilizando tecnologias voltadas à construção de interfaces modernas e aplicações web:
+- React
+- JavaScript
+- Vite
+- Tailwind CSS
+- Recharts
+- Lucide React
+- date-fns
+- LocalStorage
+A aplicação é estática e compatível com o GitHub Pages.
+Como executar o projeto
+Para executar a plataforma localmente, é necessário ter o Node.js 20 LTS instalado (também funciona com versões 18 ou superiores).
+
+Após clonar o repositório, execute os seguintes comandos:
 npm install      # instala as dependências
-npm run dev      # abre em http://localhost:5173
-npm test         # testes dos cálculos financeiros
-npm run build    # build de produção em dist/
-npm run preview  # testa o build localmente
-```
+npm run dev      # inicia o ambiente de desenvolvimento
+npm test         # executa os testes dos cálculos financeiros
+npm run build    # gera a versão de produção em dist/
+npm run preview  # permite visualizar a versão de produção
 
-## Publicar no GitHub Pages
-1. Crie um repositório no GitHub e envie o projeto para a branch `main`.
-2. Em **Settings → Pages**, escolha **Source: GitHub Actions**.
-3. A cada push em `main`, o workflow `.github/workflows/deploy.yml` roda testes, build e publica o site.
-4. Depois do primeiro `npm install`, versione também o `package-lock.json`.
 
-## O que já funciona
-- **Visão geral**: renda de referência, despesas, investido, guardado, saldo, % da renda utilizada, comparação com o mês anterior, gráficos, gastos por categoria com alerta de limite excedido e últimas movimentações.
-- **Movimentações**: criar, editar e excluir (receita, despesa, investimento, guardado), com filtros por mês, tipo, categoria e responsável.
-- **Meu orçamento**: renda e destinações (despesas, investimentos, reserva) de cada pessoa e do casal, planejado × realizado, e limite × uso por categoria.
-- **Investimentos**: cadastro manual (instituição, tipo, titular, valor inicial, saldo informado, rentabilidade informada), aportes, patrimônio, distribuição por modalidade e por pessoa e evolução. Nada de rentabilidade ou cotação é calculado automaticamente.
-- **Planos**: metas financeiras (progresso, prazo, prioridade, histórico de contribuições, reordenar), lista de desejos agrupada por mês com confirmação de compra e planejamento do próximo mês (renda prevista × despesas, investimentos, reserva, metas e compras planejadas).
-- **Histórico**: relatório anual por mês (receitas, despesas, investido, guardado, resultado), variação de despesas, distribuição percentual, comparação de categorias com o mês anterior e evolução da reserva e do patrimônio investido. Somente leitura.
-- **Recorrentes e parceladas**: ao criar uma receita ou despesa, escolha “Recorrente (mensal)” ou “Parcelada”. As ocorrências futuras ficam agendadas e só entram nos resultados na data; ao excluir, dá para remover também as próximas da série.
-- **Transferências**: entre categorias (move orçamento do mês) ou entre metas (move valor acumulado). Não são receita nem despesa.
-- **Divisão de despesas**: em despesas compartilhadas, divisão igualitária, proporcional à renda ou personalizada; o Meu orçamento mostra quem pagou, a parte de cada um e o acerto.
-- **Configurações**: nomes e rendas das duas pessoas, categorias com limite mensal, tema claro/escuro, backup JSON (exportar/importar), CSV de movimentações e apagar dados com confirmação.
+Após iniciar o ambiente de desenvolvimento, a aplicação estará disponível em:
 
-## Regras financeiras
-- Valores guardados em **centavos inteiros**; exibição em Real (R$).
-- Renda de referência = salários + rendas extras cadastradas.
-- Saldo = renda de referência + receitas registradas − despesas − investimentos − guardado (pode ficar negativo).
-- Percentual utilizado = (despesas + investimentos + guardado) ÷ renda de referência.
-- Só despesas contam nos limites por categoria; um aporte nunca conta como despesa e investimento ao mesmo tempo.
-- Um aporte é **uma única movimentação** do tipo Investimento (vinculada ao investimento): aparece em Investido e no histórico de aportes, nunca como despesa. O saldo atual do investimento é informado por você.
-- Planos (itens do próximo mês, metas e desejos) **não são movimentações**. Uma contribuição para meta vira uma movimentação do tipo Guardado e uma compra só entra nos resultados quando você a confirma (vira uma Despesa uma única vez; o desejo sai do planejado).
-- O Histórico usa as receitas **registradas** em Movimentações (a renda de referência cadastrada muda com o tempo e não é reescrita no passado).
-- Despesa compartilhada conta para cada pessoa só a sua parte; no total do casal ela conta uma única vez. Ocorrências agendadas de séries não entram nos totais antes da data.
-- Trocar de mês não apaga nada: o seletor de mês apenas filtra a visualização.
+http://localhost:5173
+Publicação no GitHub Pages
+A publicação pode ser feita diretamente pelo GitHub, utilizando o GitHub Actions.
+1. Envie os arquivos do projeto para a branch main do repositório.
+2. Acesse Settings → Pages e selecione GitHub Actions como fonte de publicação.
+3. A cada atualização enviada para a branch main, o workflow .github/workflows/deploy.yml executará os testes, criará a versão de produção e publicará a aplicação.
+4. Após a conclusão, o endereço de acesso estará disponível em Settings → Pages.
+O que vem pela frente
+O projeto ainda tem espaço para crescer. Uma das próximas melhorias planejadas é a criação de uma página exclusiva para Reserva Financeira, permitindo acompanhar depósitos, retiradas e o percentual alcançado em relação à meta estabelecida.
 
-## Ainda não incluído
-Página dedicada de Reserva financeira (depósitos e retiradas). Hoje o dinheiro guardado é registrado como movimentação “Guardado”, inclusive pelas contribuições às metas.
+Atualmente, os valores guardados são registrados como movimentações do tipo "Guardado". A nova área permitirá visualizar essa reserva de maneira mais organizada e independente.
 
-## Dados e privacidade
-Seus dados não vão para o repositório. Arquivos `backup-*.json` e `movimentacoes*.csv` estão no `.gitignore`.
+Outras ideias, sugestões e melhorias também são bem-vindas.
+Como contribuir
+O projeto está aberto a quem quiser participar de sua evolução. Se você encontrou algum problema, tem uma sugestão ou gostaria de propor uma melhoria, pode abrir uma issue para discutir a ideia ou enviar um pull request com sua contribuição.
 
-## Licença
-MIT — veja `LICENSE`.
+Toda colaboração é bem-vinda!
+Licença
+Este projeto é distribuído sob a licença MIT. Para mais informações sobre permissões e condições de uso, consulte o arquivo LICENSE.

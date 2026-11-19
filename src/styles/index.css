@@ -2,15 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { --bg:#f3f6fb; --card:#ffffff; --surface:#e5edf7; --text:#0b1626; --muted:#5d6f86; }
-.dark { --bg:#08111F; --card:#101D30; --surface:#193452; --text:#e8f0fb; --muted:#8fa3bd; color-scheme: dark; }
-body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,system-ui,sans-serif; transition:background .3s,color .3s; }
-@keyframes fade { from { opacity:0; transform:translateY(8px); } }
+:root {
+  --bg: #eef3fa; --card: rgba(255,255,255,.78); --surface: rgba(57,133,204,.10);
+  --line: rgba(15,40,80,.08); --text: #0b1626; --muted: #5d6f86;
+  --glow1: rgba(57,133,204,.16); --glow2: rgba(112,183,255,.14);
+}
+.dark {
+  --bg: #07101f; --card: rgba(16,29,48,.62); --surface: rgba(57,133,204,.14);
+  --line: rgba(112,183,255,.12); --text: #e8f0fb; --muted: #8fa3bd;
+  --glow1: rgba(57,133,204,.28); --glow2: rgba(25,52,82,.55);
+  color-scheme: dark;
+}
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; color: var(--text); font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(1100px 520px at 88% -8%, var(--glow1), transparent 62%),
+    radial-gradient(900px 520px at -8% 108%, var(--glow2), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  transition: color .3s;
+}
+.dark option { background: #101D30; color: #e8f0fb; }
+@keyframes fade { from { opacity: 0; transform: translateY(8px); } }
+
+.recharts-default-tooltip { background: var(--card) !important; border: 1px solid var(--line) !important; border-radius: 14px !important; backdrop-filter: blur(12px); }
+.recharts-tooltip-label, .recharts-tooltip-item { color: var(--text) !important; }
+.recharts-legend-item-text { color: var(--muted) !important; }
 
 @layer components {
-  .card { @apply rounded-2xl border border-black/5 p-5 dark:border-white/5; background:var(--card); }
-  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[#3985CC] px-4 py-2 text-sm font-medium text-white transition hover:brightness-110 active:scale-95; }
-  .btn-ghost { @apply btn; background:var(--surface); color:var(--text); }
-  .input { @apply w-full rounded-xl border border-transparent px-3 py-2 text-sm outline-none focus:border-[#70B7FF]; background:var(--surface); color:var(--text); }
-  .muted { color:var(--muted); }
+  .glass { background: var(--card); border: 1px solid var(--line); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+  .card { @apply rounded-3xl p-5; background: var(--card); border: 1px solid var(--line); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 10px 30px -18px rgba(3,10,25,.5); }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-[#3985CC] px-4 py-2 text-sm font-medium text-white shadow-lg shadow-[#3985CC]/20 transition hover:brightness-110 active:scale-95; }
+  .btn-ghost { @apply btn; background: var(--surface); color: var(--text); box-shadow: none; }
+  .input { @apply w-full rounded-2xl px-3.5 py-2.5 text-sm outline-none transition focus:border-[#70B7FF]; background: var(--surface); color: var(--text); border: 1px solid var(--line); }
+  .muted { color: var(--muted); }
 }
